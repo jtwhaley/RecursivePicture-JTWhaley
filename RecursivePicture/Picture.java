@@ -163,7 +163,7 @@ public class Picture extends SimplePicture
   }
   /**
    * Method to mirror around a Horizontal line in the middle
-   * of the picture based on the width
+   * of the picture based on the height
    */
   public void mirrorHorizontal(/*sourceFile*/)
   {
@@ -174,10 +174,10 @@ public class Picture extends SimplePicture
       Pixel rp = null; //Right Pixel
       
       //loop through all of the rows.
-      for(int x = 0; x<mirrorPoint; x ++)
+      for(int x = 0; x<getWidth(); x ++)
       {
           //Loop from 0 to the middle point.
-          for (int y = 0; y < getHeight(); y++)
+          for (int y = 0; y < mirrorPoint; y++)
           {
               lp = getPixel(x,y);
               rp = getPixel(x,height - 1 - y);
@@ -186,7 +186,7 @@ public class Picture extends SimplePicture
           
         }
   }
-  public void copyRegularShowSmaller()
+      public void copyRegularShowSmaller()
   {
       Picture butterfly = (new Picture("images\\RegularShow.jpg"));
 
@@ -281,15 +281,19 @@ public class Picture extends SimplePicture
                 sp8 = sourcePicture.getPixel(sourceX+1,sourceY+1);
                 sp9 = sourcePicture.getPixel(sourceX+1,sourceY-1);
                 
-                double yeet =(sp1.getRed() + sp2.getRed() + sp3.getRed() + sp4.getRed() + sp5.getRed() + sp6.getRed() + sp7.getRed() + sp8.getRed() + sp9.getRed())/9 + Math.random()*80;
-                double yeet2 = (255-sp1.getGreen() + sp2.getGreen() + sp3.getGreen() + sp4.getGreen() + sp5.getGreen() + sp6.getGreen() + sp7.getGreen() + sp8.getGreen() + sp9.getGreen())/9 + Math.random() * 20;
-                double yeet3 = sp1.getBlue() + sp2.getBlue() + sp3.getBlue() + sp4.getBlue() + sp5.getBlue() + sp6.getBlue() + sp7.getBlue() + sp8.getBlue() + sp9.getBlue()/9 + Math.random() * 60;
+                double red = Math.random()*80;
+                double green = Math.random()*40;
+                double blue = Math.random()*60;
+                
+                double yeet =(sp1.getRed() + sp2.getRed() + sp3.getRed() + sp4.getRed() + sp5.getRed() + sp6.getRed() + sp7.getRed() + sp8.getRed() + sp9.getRed())/9 + red;
+                double yeet2 = (255-sp1.getGreen() + sp2.getGreen() + sp3.getGreen() + sp4.getGreen() + sp5.getGreen() + sp6.getGreen() + sp7.getGreen() + sp8.getGreen() + sp9.getGreen())/9 + green;
+                double yeet3 = sp1.getBlue() + sp2.getBlue() + sp3.getBlue() + sp4.getBlue() + sp5.getBlue() + sp6.getBlue() + sp7.getBlue() + sp8.getBlue() + sp9.getBlue()/9 + blue;
                 if(yeet > 255)
-                    yeet = 255 - Math.random() * 255;
+                    yeet = 255 - Math.random()*255;
                 if (yeet2 > 255)
                     yeet2 = 255 - Math.random()*255;
                 if (yeet3 > 255)
-                    yeet3 = 255 - Math.random() * 255;
+                    yeet3 = 255 - Math.random()*255;
                 
                 Color color = new Color((int)yeet,(int)yeet2,(int)yeet3);
                 
@@ -343,7 +347,37 @@ public class Picture extends SimplePicture
       }
       
     }
-  public void SmallerRecursivly()
+  public void SmallerRecursivly(double width, double height, int n, Picture reg)
   {
+
+      Pixel sourcePixel = null;
+      Pixel targetPixel = null;
+      
+       n++;
+      if (n >6)
+      {
+          
+        }
+      else{
+
+      //width of source must be = or < the canvas I am copying to
+      //loop through the columns
+      for (int sourceX = 0, targetX = 0;
+           sourceX < width;
+           sourceX+=2, targetX++)
+      {
+            for (int sourceY = 0, targetY = 0;
+                sourceY < height;
+                sourceY+=2, targetY++)
+            {
+                sourcePixel = reg.getPixel(sourceX,sourceY);
+                targetPixel = this.getPixel(targetX,targetY);
+                targetPixel.setColor(sourcePixel.getColor());
+            }
+      }
+      SmallerRecursivly(width/2, height/2,n,reg);
     }
+           
+  }
+
 } // this } is the end of class Picture, put all new methods before this

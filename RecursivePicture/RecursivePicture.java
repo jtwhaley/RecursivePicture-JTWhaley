@@ -14,11 +14,15 @@ public class RecursivePicture
         Picture reg = new Picture("images/RegularShow.jpg");
         //reg.blend();
         //reg.explore();
-        myCanvas.deepFry();
-        myCanvas.explore();
+        //myCanvas.deepFry();
+        //myCanvas.explore();
         //reg.mirrorVerticle();
         //reg.explore();
-        
+        //reg.SmallerRecursivly(1280.0,720.0, 1,reg );
+        //reg.explore();
+        reg.mirrorVerticle();
+        reg.mirrorHorizontal();
+        reg.explore();
         
     }
 }
