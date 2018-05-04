@@ -12,16 +12,11 @@ public class RecursivePicture
     {
         Picture myCanvas = new Picture("images/LargeCanvas.jpg");
         Picture reg = new Picture("images/RegularShow.jpg");
-        //reg.blend();
-        //reg.explore();
-        //myCanvas.deepFry();
-        //myCanvas.explore();
-        //reg.mirrorVerticle();
-        //reg.explore();
-        //reg.SmallerRecursivly(1280.0,720.0, 1,reg );
-        //reg.explore();
+        reg.blend();
+        reg.deepFry();
         reg.mirrorVerticle();
-        reg.mirrorHorizontal();
+        reg.SmallerRecursivly(1280.0,720.0, 1,reg );
+        reg.superMirror();
         reg.explore();
         
     }

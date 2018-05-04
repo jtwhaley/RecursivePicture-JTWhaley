@@ -186,6 +186,11 @@ public class Picture extends SimplePicture
           
         }
   }
+  public void superMirror()
+  {
+      mirrorVerticle();
+      mirrorHorizontal();
+    }
       public void copyRegularShowSmaller()
   {
       Picture butterfly = (new Picture("images\\RegularShow.jpg"));
@@ -379,5 +384,5 @@ public class Picture extends SimplePicture
     }
            
   }
-
+  
 } // this } is the end of class Picture, put all new methods before this
