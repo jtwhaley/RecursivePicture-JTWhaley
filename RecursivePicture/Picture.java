@@ -382,7 +382,28 @@ public class Picture extends SimplePicture
       }
       SmallerRecursivly(width/2, height/2,n,reg);
     }
-           
+          
   }
-  
+  public void superGreen()
+  {
+      Picture reg = new Picture("images/RegularShow.jpg");
+      
+      Pixel sourcePixel = null;
+      Pixel targetPixel = null;
+      
+      for (int sourceX = 0, targetX = 0;
+           sourceX < reg.getWidth();
+           sourceX++, targetX++)
+      {
+            for (int sourceY = 0, targetY = 0;
+                sourceY < reg.getHeight();
+                sourceY++, targetY++)
+            {
+                sourcePixel = reg.getPixel(sourceX,sourceY);
+                targetPixel = this.getPixel(targetX,targetY);
+                Color color = new Color(sourcePixel.getRed(),255,sourcePixel.getBlue());
+                targetPixel.setColor(color);
+            }
+      }
+    }
 } // this } is the end of class Picture, put all new methods before this
