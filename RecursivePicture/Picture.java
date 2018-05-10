@@ -111,9 +111,9 @@ public class Picture extends SimplePicture
       }
   }
 
-  public void copyRegularShow(/*sourceFile*/)
+  public void copyRegularShow(String sourceFile, int x, int y)
     {
-      String sourceFile = ("images\\RegularShow.jpg");
+      //String sourceFile = (name);
       Picture sourcePicture = new Picture(sourceFile);
 
       Pixel sourcePixel = null;
@@ -122,11 +122,11 @@ public class Picture extends SimplePicture
 
       //width of source must be = or < the canvas I am copying to
       //loop through the columns
-      for (int sourceX = 0, targetX = 0;
+      for (int sourceX = 0, targetX = x;
            sourceX < sourcePicture.getWidth();
            sourceX++, targetX++)
       {
-            for (int sourceY = 0, targetY = 0;
+            for (int sourceY = 0, targetY = y;
                 sourceY < sourcePicture.getHeight();
                 sourceY++, targetY++)
             {
